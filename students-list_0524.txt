@@ -1,0 +1,5 @@
+120,k.uwera@gmail.com,19
+130,g.emma@gmail.com,19
+140,l.stella@gmail.com,21
+100,k.ntwari@alustudent.com,22
+110,p.dushime@@alustudent.com,20
