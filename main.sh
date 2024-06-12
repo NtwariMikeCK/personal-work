@@ -62,13 +62,28 @@ update_student() {
 	   1)  read -p "Enter new student email: " new_email
 	       awk -F, -v id="$student_id" -v email="$new_email" 'BEGIN {OFS = FS} 
                $1 == id {$2 = email} 1' $student_file > temp.txt && mv temp.txt $student_file
+	       echo "Student record updated successfully"
                ;;
-	   2)  read -p "Enter new student age: " age
-               awk -F -v id="$student_id" -v age="$age" 'BEGIN {OFS = FS} 
-               $3 == age {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
-               break;;
-        esac
-        echo "Student record updated successfully"
+	   2)  read -p "Enter new student age: " new_age
+               awk -F, -v id="$student_id" -v age="$new_age" 'BEGIN {OFS = FS} 
+               $1 == id {$3 = age} 1' $student_file > temp.txt && mv temp.txt $student_file
+	       echo "Student record updated successfully"
+               ;;
+           3)  read -p "Enter new student course: " new_course
+               awk -F, -v id="$student_id" -v course="$new_course" 'BEGIN {OFS = FS} 
+               $1 == id {$4 = course} 1' $student_file > temp.txt && mv temp.txt $student_file
+	       echo "Student record updated successfully"
+               ;;
+	   4) read -p "Enter new student email: " new_email
+	      read -p "Enter new student age: " new_age
+	      read -p "Enter new student course: " new_course
+
+	      grep -v "^$student_id," $student_file > temp_file
+              echo "$student_id,$new_email,$new_age" >> temp_file
+              mv temp_file $student_file
+              echo "Student record updated successfully."
+       esac
+        
    else
         echo "Student ID not found."
    fi
