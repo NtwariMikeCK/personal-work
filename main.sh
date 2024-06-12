@@ -62,6 +62,7 @@ update_student() {
 	   1)  read -p "Enter new student email: " new_email
 	       awk -v id="$student_id" -v email="$new_email" -F ',''BEGIN {OFS = FS} 
 	       $2 == email {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
+	esac
 
         echo "Enter new email:"
         read new_email
