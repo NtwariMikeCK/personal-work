@@ -62,20 +62,16 @@ update_student() {
 	   1)  read -p "Enter new student email: " new_email
 	       awk -v id="$student_id" -v email="$new_email" -F ',''BEGIN {OFS = FS} 
 	       $2 == email {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
-	esac
-
-        echo "Enter new email:"
-        read new_email
-        echo "Enter new age:"
-        read new_age
-        
-        grep -v "^$student_id," $student_file > temp_file
-        echo "$student_id,$new_email,$new_age" >> temp_file
-        mv temp_file $student_file
-        echo "Student record updated successfully."
-    else
+	       break;;
+	   2)  read -p "Enter new student age: " age
+               awk -v id="$student_id" -v age="$age" -F ',''BEGIN {OFS = FS} 
+               $3 == age {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
+               break;;
+        esac
+        echo "Student record updated successfully"
+   else
         echo "Student ID not found."
-    fi
+   fi
 }
 
 # Menu function
