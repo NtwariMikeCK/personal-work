@@ -60,11 +60,11 @@ update_student() {
      
         case "$choice" in
 	   1)  read -p "Enter new student email: " new_email
-	       awk -v id="$student_id" -v email="$new_email" -F ',''BEGIN {OFS = FS} 
+	       awk -F -v id="$student_id" -v email="$new_email" 'BEGIN {OFS = FS} 
 	       $2 == email {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
 	       break;;
 	   2)  read -p "Enter new student age: " age
-               awk -v id="$student_id" -v age="$age" -F ',''BEGIN {OFS = FS} 
+               awk -F -v id="$student_id" -v age="$age" 'BEGIN {OFS = FS} 
                $3 == age {$1 == id} 1' students-list_0524.txt > temp.txt && mv temp.txt students-list_0524.txt
                break;;
         esac

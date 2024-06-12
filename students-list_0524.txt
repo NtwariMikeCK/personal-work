@@ -4,4 +4,3 @@
 100,k.ntwari@alustudent.com,22
 110,p.dushime@@alustudent.com,20
 111,ntwari.com,23
-133,gmail,15
